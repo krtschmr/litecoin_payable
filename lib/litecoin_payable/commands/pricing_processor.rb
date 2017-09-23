@@ -17,12 +17,13 @@ module LitecoinPayable
         # => Loop through all unpaid payments and update them with the new price
         # => If it has been 20 mins since they have been updated
         LitecoinPayable::LitecoinPayment.where(state: ['pending', 'partial_payment']).where("updated_at < ? OR ltc_amount_due = 0", 30.minutes.ago).each do |bp|
-          bp.update!(ltc_amount_due: bp.calculate_ltc_amount_due, ltc_conversion: rate.ltc)
+          bp.update_attributes!(ltc_amount_due: bp.calculate_ltc_amount_due, ltc_conversion: rate.ltc)
         end
       end
 
       def get_ltc
-        uri = URI.parse("https://apiv2.litecoinaverage.com/indices/local/ticker/BTC#{LitecoinPayable.config.currency.to_s.upcase}")
+
+        uri = URI.parse("https://apiv2.bitcoinaverage.com/indices/local/ticker/LTC#{LitecoinPayable.config.currency.to_s.upcase}")
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
 

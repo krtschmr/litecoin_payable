@@ -56,11 +56,11 @@ module LitecoinPayable
     def populate_currency_and_amount_due
       self.currency ||= LitecoinPayable.config.currency
       self.ltc_amount_due = calculate_ltc_amount_due
-      self.ltc_conversion = CurrencyConversion.last.ltc
+      self.ltc_conversion = LitecoinPayable::CurrencyConversion.last.ltc
     end
 
     def populate_address
-      self.update(address: Address.create(self.id))
+      self.update_attributes(address: Address.create(self.id))
     end
 
     def notify_payable

@@ -8,7 +8,7 @@ module LitecoinPayable
     module ClassMethods
 
       def has_litecoin_payments(options = {})
-        has_many :litecoin_payments, -> {order(:id)}, class_name: LitecoinPayable::LitecoinPayment, as: 'payable'
+        has_many :litecoin_payments, class_name: LitecoinPayable::LitecoinPayment, as: 'payable'
       end
 
     end

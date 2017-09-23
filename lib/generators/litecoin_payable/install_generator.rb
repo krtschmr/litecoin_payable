@@ -12,7 +12,7 @@ module LitecoinPayable
     def create_migration_file
       migration_template 'create_litecoin_payments.rb', 'db/migrate/create_litecoin_payments.rb'
       migration_template 'create_litecoin_payment_transactions.rb', 'db/migrate/create_litecoin_payment_transactions.rb'
-      migration_template 'create_currency_conversions.rb', 'db/migrate/create_currency_conversions.rb'
+      migration_template 'create_currency_litecoin_conversions.rb', 'db/migrate/create_currency_litecoin_conversions.rb'
       migration_template 'add_ltc_conversion_to_litecoin_payments.rb', 'db/migrate/add_ltc_conversion_to_litecoin_payments.rb'
     end
 

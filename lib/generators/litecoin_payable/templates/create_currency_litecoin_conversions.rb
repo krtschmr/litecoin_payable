@@ -1,6 +1,6 @@
-class CreateCurrencyConversions < ActiveRecord::Migration
+class CreateCurrencyLitecoinConversions < ActiveRecord::Migration
   def change
-    create_table :currency_conversions do |t|
+    create_table :currency_litecoin_conversions do |t|
       t.float "currency"
       t.integer "ltc"
       t.datetime "created_at"

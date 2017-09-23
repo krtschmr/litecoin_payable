@@ -4,9 +4,9 @@ module LitecoinPayable::Adapters
 
     def initialize
       if LitecoinPayable.config.testnet
-        @blockcypher = BlockCypher::Api.new(network: BlockCypher::TEST_NET_3)
+        @blockcypher = BlockCypher::Api.new(currency: "ltc", network: BlockCypher::TEST_NET_3)
       else
-        @blockcypher = BlockCypher::Api.new
+        @blockcypher = BlockCypher::Api.new(currency: "ltc")
       end
     end
 

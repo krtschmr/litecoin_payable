@@ -9,7 +9,8 @@ module LitecoinPayable
         raise "MASTER_SEED or MASTER_PUBLIC_KEY is required"
       end
 
-      node.to_address(network: LitecoinPayable.config.network)
+      # litecoin network not implemented inside money-tree gem
+      node.to_address(network: :bitcoin)
     end
 
   end
